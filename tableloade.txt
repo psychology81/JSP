@@ -1,0 +1,21 @@
+	
+
+	private void movieTload() {
+		dbconnect();
+		sqlmovie = "SELECT * FROM movie";
+		sqlmember = "select * from memberlist";
+		try {
+			pstmtmovie = conn.prepareStatement(sqlmovie);
+			resultmovie = pstmtmovie.executeQuery();
+			movieTable.setModel(DbUtils.resultSetToTableModel(resultmovie)); // 질의 결과를 테이블에 넘겨준다.
+			
+			pstmtmember = conn.prepareStatement(sqlmember);
+			resultmember = pstmtmember.executeQuery();
+			memberTable.setModel(DbUtils.resultSetToTableModel(resultmember)); // 질의 결과를 테이블에 넘겨준다.
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		
+		}//end of catch
+	     
+	
